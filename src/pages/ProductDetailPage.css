@@ -1,0 +1,145 @@
+.product-detail-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding-bottom: 100px;
+}
+
+.product-detail-page__header {
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 10;
+}
+
+.product-detail-page__back {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.product-detail-page__back:hover {
+  color: #0f172a;
+}
+
+.product-detail-page__image-wrapper {
+  aspect-ratio: 4 / 3;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 16px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.product-detail-page__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+.product-detail-page__content {
+  padding: 24px 16px;
+}
+
+.product-detail-page__title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.product-detail-page__title {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.product-detail-page__price {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1445b8;
+}
+
+.product-detail-page__specs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+}
+
+.product-detail-page__spec-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-detail-page__spec-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.product-detail-page__spec-value {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.product-detail-page__description {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 24px;
+}
+
+.product-detail-page__cta {
+  width: 100%;
+  padding: 16px;
+  background: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.product-detail-page__cta:hover {
+  background: #1e293b;
+}
+
+.product-detail-page__not-found {
+  padding: 80px 16px;
+  text-align: center;
+  font-family: 'Manrope', sans-serif;
+  color: #64748b;
+}
+
+@media (min-width: 768px) {
+  .product-detail-page {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}

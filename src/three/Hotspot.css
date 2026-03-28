@@ -1,0 +1,64 @@
+.hotspot {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.hotspot:hover {
+  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.hotspot__pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  animation: hotspot-pulse 2s ease-out infinite;
+}
+
+@keyframes hotspot-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.hotspot__icon {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.hotspot__label {
+  display: block;
+  margin-top: 6px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.hotspot:hover ~ .hotspot__label {
+  opacity: 1;
+}

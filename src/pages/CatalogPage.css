@@ -1,0 +1,44 @@
+.catalog-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 0 16px 100px;
+}
+
+.catalog-page__header {
+  padding: 24px 0 16px;
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 10;
+}
+
+.catalog-page__title {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.catalog-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .catalog-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+
+  .catalog-page__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .catalog-page__title {
+    font-size: 28px;
+  }
+}

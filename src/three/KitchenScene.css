@@ -1,0 +1,10 @@
+.kitchen-scene {
+  position: fixed;
+  inset: 0;
+  background: #1a1a2e;
+}
+
+.kitchen-scene canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

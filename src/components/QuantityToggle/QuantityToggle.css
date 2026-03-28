@@ -1,0 +1,36 @@
+.quantity-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.quantity-toggle__btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  transition: background 0.15s;
+}
+
+.quantity-toggle__btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.quantity-toggle__value {
+  min-width: 28px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
