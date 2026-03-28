@@ -6,6 +6,7 @@ import type { Bounds } from '../utils/cameramath'
 
 const EYE_HEIGHT = 1.6
 const LOOK_SENSITIVITY = 0.003
+const TOUCH_SENSITIVITY = 0.015  // ~180° per full screen swipe
 const DRAG_THRESHOLD_MOUSE = 3   // px before mouse counts as drag
 const DRAG_THRESHOLD_TOUCH = 1   // nearly instant for touch
 const PITCH_MIN = -Math.PI / 3
@@ -112,33 +113,19 @@ export function CameraController({
     }
 
     if (isDraggingRef.current && !isFocusing.current) {
-      if (isTouchInput.current) {
-        // 1:1 finger tracking — compute sensitivity from canvas size & FOV
-        // so dragging across the full screen width ≈ rotates by the horizontal FOV
-        const canvas = gl.domElement
-        const cam = camera as THREE.PerspectiveCamera
-        const vFov = (cam.fov * Math.PI) / 180
-        const hFov = 2 * Math.atan(Math.tan(vFov / 2) * cam.aspect)
-        const sensX = hFov / canvas.clientWidth
-        const sensY = vFov / canvas.clientHeight
-        yawRef.current -= dx * sensX
-        pitchRef.current = clampPitch(
-          pitchRef.current - dy * sensY,
-          PITCH_MIN,
-          PITCH_MAX
-        )
-      } else {
-        yawRef.current -= dx * LOOK_SENSITIVITY
-        pitchRef.current = clampPitch(
-          pitchRef.current - dy * LOOK_SENSITIVITY,
-          PITCH_MIN,
-          PITCH_MAX
-        )
-      }
+      // Touch: a full swipe across the screen ≈ 180° rotation
+      // Mouse: slower precision control
+      const sensitivity = isTouchInput.current ? TOUCH_SENSITIVITY : LOOK_SENSITIVITY
+      yawRef.current -= dx * sensitivity
+      pitchRef.current = clampPitch(
+        pitchRef.current - dy * sensitivity,
+        PITCH_MIN,
+        PITCH_MAX
+      )
     }
 
     lastPointer.current = { x: e.clientX, y: e.clientY }
-  }, [isDraggingRef, gl, camera])
+  }, [isDraggingRef])
 
   // pointerup — keep isDraggingRef as-is so MoveIndicator can check it
   // It gets reset on the next pointermove (hover) or pointerdown
