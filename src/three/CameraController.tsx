@@ -6,6 +6,7 @@ import type { Bounds } from '../utils/cameramath'
 
 const EYE_HEIGHT = 1.6
 const LOOK_SENSITIVITY = 0.003
+const TOUCH_SENSITIVITY = 0.008
 const PITCH_MIN = -Math.PI / 3
 const PITCH_MAX = Math.PI / 3
 const FOCUS_LERP_SPEED = 0.04
@@ -50,6 +51,7 @@ export function CameraController({
   const pitchRef = useRef(START_PITCH)
   const posRef = useRef(new THREE.Vector3(...START_POSITION))
   const lastPointer = useRef({ x: 0, y: 0 })
+  const isTouchInput = useRef(false)
   const isFocusing = useRef(false)
   const focusProgress = useRef(0)
   const focusStartPos = useRef(new THREE.Vector3())
@@ -89,6 +91,7 @@ export function CameraController({
   // Drag-to-look
   const handlePointerDown = useCallback((e: PointerEvent) => {
     isDraggingRef.current = false
+    isTouchInput.current = e.pointerType === 'touch'
     lastPointer.current = { x: e.clientX, y: e.clientY }
   }, [isDraggingRef])
 
@@ -107,9 +110,10 @@ export function CameraController({
     }
 
     if (isDraggingRef.current && !isFocusing.current) {
-      yawRef.current -= dx * LOOK_SENSITIVITY
+      const sensitivity = isTouchInput.current ? TOUCH_SENSITIVITY : LOOK_SENSITIVITY
+      yawRef.current -= dx * sensitivity
       pitchRef.current = clampPitch(
-        pitchRef.current - dy * LOOK_SENSITIVITY,
+        pitchRef.current - dy * sensitivity,
         PITCH_MIN,
         PITCH_MAX
       )
