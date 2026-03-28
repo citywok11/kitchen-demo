@@ -16,7 +16,7 @@ export function ProductBottomSheet({
   // Track the product to display (persists during close animation)
   const [displayProduct, setDisplayProduct] = useState<Product | null>(null)
   const [isClosing, setIsClosing] = useState(false)
-  const closingTimeout = useRef<ReturnType<typeof setTimeout>>()
+  const closingTimeout = useRef<ReturnType<typeof setTimeout>>(undefined)
 
   useEffect(() => {
     if (product) {

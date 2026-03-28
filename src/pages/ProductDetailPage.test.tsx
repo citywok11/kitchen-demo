@@ -1,10 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import { ProductDetailPage } from './ProductDetailPage'
-import { CartProvider, useCart } from '../context/CartContext'
-import type { ReactNode } from 'react'
+import { CartProvider } from '../context/CartContext'
 
 function renderWithRoute(productId: string) {
   return render(
