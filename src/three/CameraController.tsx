@@ -116,8 +116,9 @@ export function CameraController({
         // 1:1 finger tracking — compute sensitivity from canvas size & FOV
         // so dragging across the full screen width ≈ rotates by the horizontal FOV
         const canvas = gl.domElement
-        const vFov = (camera.fov * Math.PI) / 180
-        const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect)
+        const cam = camera as THREE.PerspectiveCamera
+        const vFov = (cam.fov * Math.PI) / 180
+        const hFov = 2 * Math.atan(Math.tan(vFov / 2) * cam.aspect)
         const sensX = hFov / canvas.clientWidth
         const sensY = vFov / canvas.clientHeight
         yawRef.current -= dx * sensX
